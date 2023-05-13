@@ -1,126 +1,37 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>LEDM Loan Calculator - README</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+# Project Title
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+This web application build with PHP and Laravel,  allows users to calculate loan details and generate an amortization schedule. 
+Users can input loan amount, interest rate, loan term, and optional fixed extra payment to get detailed loan calculations.
 
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+## Tech Stack
 
-        h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
+PHP: (version 8.2.4)
 
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            overflow-x: auto;
-        }
+Composer: (version 2.5.5)
 
-        code {
-            font-family: Consolas, monospace;
-        }
+MySQL:  libmysql - mysqlnd 8.2.4
 
-        p {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
+## Installation
+1) clone the repository:
+2) Install project dependencies:
 
-<body>
-    <h1>Loan Calculation Web App</h1>
+    2.1 Install the Composer package through https://getcomposer.org/
 
-    <p>This web application allows users to calculate loan details and generate an amortization schedule. Users can input loan amount, interest rate, loan term, and optional fixed extra payment to get detailed loan calculations.</p>
+    2.2 Install Xampp Server to run Apache, & MySQL Server
 
-    <h2>Prerequisites</h2>
+3) update your .env with your MySQL server details.
+4) Run Code Migration to genrate db and its table.
+5) Start the server using the command : (php artisan serve) in your terminal with the path you have cloned the project to.
 
-    <ul>
-        <li>PHP (version 8.2.4)</li>
-        <li>Composer (version 2.5.5)</li>
-        <li>MySQL  libmysql - mysqlnd 8.2.4</li>
-    </ul>
 
-    <h2>Getting Started</h2>
 
-    <ol>
-        <li>
-            <p>Clone the repository:</p>
-            <pre><code>git clone &lt;repository-url&gt;</code></pre>
-        </li>
-        <li>
-            <p>Install project dependencies:</p>
-            <p>Install the package through <a href="https://getcomposer.org/">getcomposer.org</a>>.
-            </p>
-            <pre><code>composer install
-            </code></pre>
-        </li>
-        <li>
-            <p>Set up the database:</p>
-            <ul>
-                <li>Create a new MySQL database for the application.</li>
-                <li>Update the <code>.env</code> file with your database credentials:</li>
-            </ul>
-            <pre><code>
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-            </code></pre>
-        </li>
-        <li>
-            <p>Run database migrations and seeders:</p>
-            <pre><code>php artisan migrate --seed</code></pre>
-            <p>This will create the necessary database tables and seed them with initial data.</p>
-        </li>
-        <li>
-            <p>Generate application key:</p>
-            <pre><code>php artisan key:generate</code></pre>
-        </li>
-        <li>
-            <p>Start the development server:</p>
-            <pre><code>php artisan serve</code></pre>
-            <p>This will start the application on <a href="http://localhost:8000">http://localhost:8000</a>.</p>
-        </li>
-    </ol>
+## Usage
 
-    <h2>Usage</h2>
+1) if the application run successfully , navigate to the url shown in terminal , usually it is : (http://localhost:8000)
+## By:
 
-    <ol>
-        <li>
-            <p>Open a web browser and navigate to <a href="http://localhost:8000">http://localhost:8000</a>.</p>
-        </li>
-        <li>
-            <p>Fill in the loan details in the provided form, including loan amount, interest rate, loan term, and optional fixed extra payment.</p>
-               <li>
-            <p>Click on the "Calculate" button to see the loan calculation results, including the amortization schedule.</p>
-        </li>
-        <li>
-            <p>Navigate through the application to explore other features and functionalities.</p>
-        </li>
-    </ol>
+Hassan Rashid 
 
-    <h2>Thank you</h2>
-
-    <p>This project is a test submitted by Hassan Rashid  for EDM .</p>
-
- 
-
-</body>
-
-</html>
+![Logo](https://media.licdn.com/dms/image/D4D03AQGEXvzpVX1qbQ/profile-displayphoto-shrink_400_400/0/1658406857229?e=1689206400&v=beta&t=ickpa50JeGMjtaRL6gGCB7V7v0CSmmqKVswtMAKobZA)
 
