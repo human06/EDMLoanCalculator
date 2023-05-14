@@ -1,5 +1,5 @@
 
-# Project Title
+# EDM Loan Calculator
 
 This web application build with PHP and Laravel,  allows users to calculate loan details and generate an amortization schedule. 
 Users can input loan amount, interest rate, loan term, and optional fixed extra payment to get detailed loan calculations.
