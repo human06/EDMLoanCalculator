@@ -21,7 +21,7 @@ MySQL:  libmysql - mysqlnd 8.2.4
     2.2 Install Xampp Server to run Apache, & MySQL Server
 
 3) update your .env with your MySQL server details.
-4) Run Code Migration to genrate db and its table.
+4) Run Code Migration to genrate db and its table. (pho artisan migrate)
 5) Start the server using the command : (php artisan serve) in your terminal with the path you have cloned the project to.
 
 

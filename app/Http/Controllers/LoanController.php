@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoanRequest;
 use App\Services\LoanCalculatorService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\LoanAmortizationSchedule;
+use App\Models\ExtraRepaymentSchedule;
 
 class LoanController extends Controller
 {
@@ -22,7 +24,7 @@ class LoanController extends Controller
         return view('loan.index');
     }
 
-    public function calculate(Request $request)
+    public function calculate(LoanRequest $request)
     {
 
         \Log::info(json_encode($request->all()));
@@ -36,29 +38,9 @@ class LoanController extends Controller
         $effectiveInterestRate = ($interest / 12) / 100; // Calculate the effective interest rate
 
         // Validate user values ...
-        $validatedData = $request->validate(
-            [
-                'principal' => 'required|numeric|min:1',
-                'interest' => 'required|numeric|min:0',
-                'term' => 'required|numeric|min:1|max:20',
-                'extra_payment' => 'nullable|numeric|min:0',
-            ],
-            [
-                'principal.required' => 'The loan amount is required.',
-                'principal.numeric' => 'The loan amount must be a number.',
-                'principal.min' => 'The loan amount must be a non-negative value.',
-                'interest.required' => 'The annual interest rate is required.',
-                'interest.numeric' => 'The annual interest rate must be a number.',
-                'interest.min' => 'The annual interest rate must be a non-negative value.',
-                'term.required' => 'The loan term is required.',
-                'term.numeric' => 'The loan term must be a number.',
-                'term.min' => 'The loan term must be a btween a year to 20 years.',
-                'term.max' => 'The loan term must not exceed 20 years.',
-                'extra_payment.numeric' => 'The monthly fixed extra payment must be a number.',
-                'extra_payment.min' => 'The monthly fixed extra payment must be a non-negative value.',
-            ]);
+        $validatedData = $request->validated();
 
-// calculate loan ...
+        // calculate loan ...
         $results = $this->loanCalculatorService->Calculate($principal, $interest, $term, $extraPayment);
 
         $amortizationSchedule = $results['amortizationSchedule'];
@@ -82,7 +64,7 @@ class LoanController extends Controller
             ];
         }
 
-        DB::table('loan_amortization_schedule')->insert($amortizationData);
+         LoanAmortizationSchedule::insert($amortizationData);
 
 // Save extra repayment schedule data to the database (extra payment table )
         $extraRepaymentData = [];
@@ -102,8 +84,7 @@ class LoanController extends Controller
             ];
         }
 
-        DB::table('extra_repayment_schedule')->insert($extraRepaymentData);
-
+        ExtraRepaymentSchedule::insert($extraRepaymentData);
         // return view ..
         return view('loan.results', compact('principal', 'interest', 'term', 'extraPayment', 'monthlyPayment', 'effectiveInterestRate', 'amortizationSchedule', 'extraRepaymentSchedule'));
 
